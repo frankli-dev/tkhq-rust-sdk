@@ -2,8 +2,9 @@ use std::{env, process};
 
 use tkhq_rust_sdk::client::{self, CreateSubOrganization};
 use tkhq_rust_sdk::gen::external::activity::v1::CreateSubOrganizationRequest;
+use tkhq_rust_sdk::r#gen::immutable::activity::v1::CreateSubOrganizationIntentV5;
 use tkhq_rust_sdk::gen::immutable::activity::v1::{
-    ActivityType, ApiKeyParams, CreateSubOrganizationIntentV4, RootUserParams,
+    ActivityType, ApiKeyParams, RootUserParams, RootUserParamsV2,
 };
 
 #[tokio::main]
@@ -30,11 +31,12 @@ async fn main() {
             .as_str_name()
             .to_owned(),
         timestamp_ms,
-        parameters: Some(CreateSubOrganizationIntentV4 {
+        parameters: Some(CreateSubOrganizationIntentV5 {
             sub_organization_name,
-            root_users: vec![RootUserParams {
+            root_users: vec![RootUserParamsV2 {
                 user_name: "root".to_owned(),
                 user_email: None,
+                oauth_providers: vec![],
                 api_keys: vec![ApiKeyParams {
                     api_key_name: "root_public_key".to_owned(),
                     public_key: root_user_public_key,

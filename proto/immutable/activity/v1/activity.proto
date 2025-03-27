@@ -165,6 +165,7 @@ message Intent {
     CreatePoliciesIntent create_policies_intent = 63;
     SignRawPayloadsIntent sign_raw_payloads_intent = 64;
     CreateReadOnlySessionIntent create_read_only_session_intent = 65;
+    CreateSubOrganizationIntentV5 create_sub_organization_intent_v5 = 68;
   }
 }
 

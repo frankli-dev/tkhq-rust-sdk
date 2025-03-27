@@ -11037,6 +11037,9 @@ impl serde::Serialize for Intent {
                 intent::Inner::CreateReadOnlySessionIntent(v) => {
                     struct_ser.serialize_field("createReadOnlySessionIntent", v)?;
                 }
+                intent::Inner::CreateSubOrganizationIntentV5(v) => {
+                    struct_ser.serialize_field("createSubOrganizationIntentV5", v)?;
+                }
             }
         }
         struct_ser.end()
@@ -11177,6 +11180,8 @@ impl<'de> serde::Deserialize<'de> for Intent {
             "signRawPayloadsIntent",
             "create_read_only_session_intent",
             "createReadOnlySessionIntent",
+            "create_sub_organization_intent_v5",
+            "createSubOrganizationIntentV5",
         ];
 
         #[allow(clippy::enum_variant_names)]
@@ -11245,6 +11250,7 @@ impl<'de> serde::Deserialize<'de> for Intent {
             CreatePoliciesIntent,
             SignRawPayloadsIntent,
             CreateReadOnlySessionIntent,
+            CreateSubOrganizationIntentV5,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -11330,6 +11336,7 @@ impl<'de> serde::Deserialize<'de> for Intent {
                             "createPoliciesIntent" | "create_policies_intent" => Ok(GeneratedField::CreatePoliciesIntent),
                             "signRawPayloadsIntent" | "sign_raw_payloads_intent" => Ok(GeneratedField::SignRawPayloadsIntent),
                             "createReadOnlySessionIntent" | "create_read_only_session_intent" => Ok(GeneratedField::CreateReadOnlySessionIntent),
+                            "createSubOrganizationIntentV5" | "create_sub_organization_intent_v5" => Ok(GeneratedField::CreateSubOrganizationIntentV5),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -11798,6 +11805,13 @@ impl<'de> serde::Deserialize<'de> for Intent {
                                 return Err(serde::de::Error::duplicate_field("createReadOnlySessionIntent"));
                             }
                             inner__ = map_.next_value::<::std::option::Option<_>>()?.map(intent::Inner::CreateReadOnlySessionIntent)
+;
+                        }
+                        GeneratedField::CreateSubOrganizationIntentV5 => {
+                            if inner__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("createSubOrganizationIntentV5"));
+                            }
+                            inner__ = map_.next_value::<::std::option::Option<_>>()?.map(intent::Inner::CreateSubOrganizationIntentV5)
 ;
                         }
                     }
