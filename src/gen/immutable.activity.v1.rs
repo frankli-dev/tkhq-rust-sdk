@@ -951,7 +951,7 @@ pub struct ImportPrivateKeyIntent {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Result {
-    #[prost(oneof="result::Inner", tags="1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53")]
+    #[prost(oneof="result::Inner", tags="1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 56")]
     pub inner: ::core::option::Option<result::Inner>,
 }
 /// Nested message and enum types in `Result`.
@@ -1063,6 +1063,8 @@ pub mod result {
         SignRawPayloadsResult(super::SignRawPayloadsResult),
         #[prost(message, tag="53")]
         CreateReadOnlySessionResult(super::CreateReadOnlySessionResult),
+        #[prost(message, tag="56")]
+        CreateSubOrganizationResultV5(super::CreateSubOrganizationResultV5),
     }
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -1374,6 +1376,17 @@ pub struct WalletResult {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateSubOrganizationResultV4 {
+    #[prost(string, tag="1")]
+    pub sub_organization_id: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="2")]
+    pub wallet: ::core::option::Option<WalletResult>,
+    #[prost(string, repeated, tag="3")]
+    pub root_user_ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// Going directly to V5 to have it in parity with intent versioning
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateSubOrganizationResultV5 {
     #[prost(string, tag="1")]
     pub sub_organization_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag="2")]

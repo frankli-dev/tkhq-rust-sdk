@@ -1754,6 +1754,7 @@ message Result {
     CreatePoliciesResult create_policies_result = 51;
     SignRawPayloadsResult sign_raw_payloads_result = 52;
     CreateReadOnlySessionResult create_read_only_session_result = 53;
+    CreateSubOrganizationResultV5 create_sub_organization_result_v5 = 56;
   }
 }
 
@@ -2117,6 +2118,15 @@ message WalletResult {
 
 // Going directly to V4 to have it in parity with intent versioning
 message CreateSubOrganizationResultV4 {
+  string sub_organization_id = 1 [(google.api.field_behavior) = REQUIRED];
+
+  optional WalletResult wallet = 2;
+
+  repeated string root_user_ids = 3;
+}
+
+// Going directly to V5 to have it in parity with intent versioning
+message CreateSubOrganizationResultV5 {
   string sub_organization_id = 1 [(google.api.field_behavior) = REQUIRED];
 
   optional WalletResult wallet = 2;

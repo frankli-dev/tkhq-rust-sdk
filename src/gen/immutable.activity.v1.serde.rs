@@ -5736,6 +5736,133 @@ impl<'de> serde::Deserialize<'de> for CreateSubOrganizationResultV4 {
         deserializer.deserialize_struct("immutable.activity.v1.CreateSubOrganizationResultV4", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for CreateSubOrganizationResultV5 {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.CreateSubOrganizationResultV5", len)?;
+        if true {
+            struct_ser.serialize_field("subOrganizationId", &self.sub_organization_id)?;
+        }
+        if let Some(v) = self.wallet.as_ref() {
+            struct_ser.serialize_field("wallet", v)?;
+        }
+        if true {
+            struct_ser.serialize_field("rootUserIds", &self.root_user_ids)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for CreateSubOrganizationResultV5 {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "sub_organization_id",
+            "subOrganizationId",
+            "wallet",
+            "root_user_ids",
+            "rootUserIds",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            SubOrganizationId,
+            Wallet,
+            RootUserIds,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "subOrganizationId" | "sub_organization_id" => Ok(GeneratedField::SubOrganizationId),
+                            "wallet" => Ok(GeneratedField::Wallet),
+                            "rootUserIds" | "root_user_ids" => Ok(GeneratedField::RootUserIds),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = CreateSubOrganizationResultV5;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct immutable.activity.v1.CreateSubOrganizationResultV5")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateSubOrganizationResultV5, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut sub_organization_id__ = None;
+                let mut wallet__ = None;
+                let mut root_user_ids__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::SubOrganizationId => {
+                            if sub_organization_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("subOrganizationId"));
+                            }
+                            sub_organization_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Wallet => {
+                            if wallet__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("wallet"));
+                            }
+                            wallet__ = map_.next_value()?;
+                        }
+                        GeneratedField::RootUserIds => {
+                            if root_user_ids__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("rootUserIds"));
+                            }
+                            root_user_ids__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(CreateSubOrganizationResultV5 {
+                    sub_organization_id: sub_organization_id__.unwrap_or_default(),
+                    wallet: wallet__,
+                    root_user_ids: root_user_ids__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("immutable.activity.v1.CreateSubOrganizationResultV5", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for CreateUserTagIntent {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -13005,6 +13132,9 @@ impl serde::Serialize for Result {
                 result::Inner::CreateReadOnlySessionResult(v) => {
                     struct_ser.serialize_field("createReadOnlySessionResult", v)?;
                 }
+                result::Inner::CreateSubOrganizationResultV5(v) => {
+                    struct_ser.serialize_field("createSubOrganizationResultV5", v)?;
+                }
             }
         }
         struct_ser.end()
@@ -13121,6 +13251,8 @@ impl<'de> serde::Deserialize<'de> for Result {
             "signRawPayloadsResult",
             "create_read_only_session_result",
             "createReadOnlySessionResult",
+            "create_sub_organization_result_v5",
+            "createSubOrganizationResultV5",
         ];
 
         #[allow(clippy::enum_variant_names)]
@@ -13177,6 +13309,7 @@ impl<'de> serde::Deserialize<'de> for Result {
             CreatePoliciesResult,
             SignRawPayloadsResult,
             CreateReadOnlySessionResult,
+            CreateSubOrganizationResultV5,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -13250,6 +13383,7 @@ impl<'de> serde::Deserialize<'de> for Result {
                             "createPoliciesResult" | "create_policies_result" => Ok(GeneratedField::CreatePoliciesResult),
                             "signRawPayloadsResult" | "sign_raw_payloads_result" => Ok(GeneratedField::SignRawPayloadsResult),
                             "createReadOnlySessionResult" | "create_read_only_session_result" => Ok(GeneratedField::CreateReadOnlySessionResult),
+                            "createSubOrganizationResultV5" | "create_sub_organization_result_v5" => Ok(GeneratedField::CreateSubOrganizationResultV5),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -13634,6 +13768,13 @@ impl<'de> serde::Deserialize<'de> for Result {
                                 return Err(serde::de::Error::duplicate_field("createReadOnlySessionResult"));
                             }
                             inner__ = map_.next_value::<::std::option::Option<_>>()?.map(result::Inner::CreateReadOnlySessionResult)
+;
+                        }
+                        GeneratedField::CreateSubOrganizationResultV5 => {
+                            if inner__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("createSubOrganizationResultV5"));
+                            }
+                            inner__ = map_.next_value::<::std::option::Option<_>>()?.map(result::Inner::CreateSubOrganizationResultV5)
 ;
                         }
                     }
