@@ -1240,6 +1240,48 @@ message CreateSubOrganizationIntentV4 {
   }];
 }
 
+message CreateSubOrganizationIntentV5 {
+  // @inject_tag: validate:"omitempty,tk_label,tk_label_length"
+  string sub_organization_name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name for this sub-organization",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"required"
+  repeated RootUserParamsV2 root_users = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Root users to create within this sub-organization",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"required"
+  int32 root_quorum_threshold = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The threshold of unique approvals to reach root quorum. This value must be less than or equal to the number of root users",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"omitempty"
+  optional WalletParams wallet = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The wallet to create for the sub-organization",
+    title: ""
+  }];
+  // @inject_tag: validate:"omitempty"
+  optional bool disable_email_recovery = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Disable email recovery for the sub-organization",
+    title: ""
+  }];
+  // @inject_tag: validate:"omitempty"
+  optional bool disable_email_auth = 6 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Disable email auth for the sub-organization",
+    title: ""
+  }];
+}
+
 message UpdatePolicyIntent {
   // @inject_tag: validate:"uuid"
   string policy_id = 1 [

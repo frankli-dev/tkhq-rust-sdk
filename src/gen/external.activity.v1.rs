@@ -485,7 +485,7 @@ pub struct CreateSubOrganizationRequest {
     #[prost(string, tag="3")]
     pub organization_id: ::prost::alloc::string::String,
     #[prost(message, optional, tag="4")]
-    pub parameters: ::core::option::Option<super::super::super::immutable::activity::v1::CreateSubOrganizationIntentV4>,
+    pub parameters: ::core::option::Option<super::super::super::immutable::activity::v1::CreateSubOrganizationIntentV5>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

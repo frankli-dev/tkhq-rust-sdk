@@ -743,7 +743,7 @@ message CreateSubOrganizationRequest {
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Unique identifier for a given Organization."}
   ];
-  immutable.activity.v1.CreateSubOrganizationIntentV4 parameters = 4 [(google.api.field_behavior) = REQUIRED];
+  immutable.activity.v1.CreateSubOrganizationIntentV5 parameters = 4 [(google.api.field_behavior) = REQUIRED];
 }
 
 message InitUserEmailRecoveryRequest {

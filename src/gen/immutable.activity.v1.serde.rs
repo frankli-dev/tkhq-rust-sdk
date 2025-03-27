@@ -5188,6 +5188,189 @@ impl<'de> serde::Deserialize<'de> for CreateSubOrganizationIntentV4 {
         deserializer.deserialize_struct("immutable.activity.v1.CreateSubOrganizationIntentV4", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for CreateSubOrganizationIntentV5 {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.CreateSubOrganizationIntentV5", len)?;
+        if true {
+            struct_ser.serialize_field("subOrganizationName", &self.sub_organization_name)?;
+        }
+        if true {
+            struct_ser.serialize_field("rootUsers", &self.root_users)?;
+        }
+        if true {
+            struct_ser.serialize_field("rootQuorumThreshold", &self.root_quorum_threshold)?;
+        }
+        if let Some(v) = self.wallet.as_ref() {
+            struct_ser.serialize_field("wallet", v)?;
+        }
+        if let Some(v) = self.disable_email_recovery.as_ref() {
+            struct_ser.serialize_field("disableEmailRecovery", v)?;
+        }
+        if let Some(v) = self.disable_email_auth.as_ref() {
+            struct_ser.serialize_field("disableEmailAuth", v)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for CreateSubOrganizationIntentV5 {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "sub_organization_name",
+            "subOrganizationName",
+            "root_users",
+            "rootUsers",
+            "root_quorum_threshold",
+            "rootQuorumThreshold",
+            "wallet",
+            "disable_email_recovery",
+            "disableEmailRecovery",
+            "disable_email_auth",
+            "disableEmailAuth",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            SubOrganizationName,
+            RootUsers,
+            RootQuorumThreshold,
+            Wallet,
+            DisableEmailRecovery,
+            DisableEmailAuth,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "subOrganizationName" | "sub_organization_name" => Ok(GeneratedField::SubOrganizationName),
+                            "rootUsers" | "root_users" => Ok(GeneratedField::RootUsers),
+                            "rootQuorumThreshold" | "root_quorum_threshold" => Ok(GeneratedField::RootQuorumThreshold),
+                            "wallet" => Ok(GeneratedField::Wallet),
+                            "disableEmailRecovery" | "disable_email_recovery" => Ok(GeneratedField::DisableEmailRecovery),
+                            "disableEmailAuth" | "disable_email_auth" => Ok(GeneratedField::DisableEmailAuth),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = CreateSubOrganizationIntentV5;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct immutable.activity.v1.CreateSubOrganizationIntentV5")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<CreateSubOrganizationIntentV5, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut sub_organization_name__ = None;
+                let mut root_users__ = None;
+                let mut root_quorum_threshold__ = None;
+                let mut wallet__ = None;
+                let mut disable_email_recovery__ = None;
+                let mut disable_email_auth__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::SubOrganizationName => {
+                            if sub_organization_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("subOrganizationName"));
+                            }
+                            sub_organization_name__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::RootUsers => {
+                            if root_users__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("rootUsers"));
+                            }
+                            root_users__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::RootQuorumThreshold => {
+                            if root_quorum_threshold__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("rootQuorumThreshold"));
+                            }
+                            root_quorum_threshold__ = 
+                                Some(map_.next_value::<::pbjson::private::NumberDeserialize<_>>()?.0)
+                            ;
+                        }
+                        GeneratedField::Wallet => {
+                            if wallet__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("wallet"));
+                            }
+                            wallet__ = map_.next_value()?;
+                        }
+                        GeneratedField::DisableEmailRecovery => {
+                            if disable_email_recovery__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("disableEmailRecovery"));
+                            }
+                            disable_email_recovery__ = map_.next_value()?;
+                        }
+                        GeneratedField::DisableEmailAuth => {
+                            if disable_email_auth__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("disableEmailAuth"));
+                            }
+                            disable_email_auth__ = map_.next_value()?;
+                        }
+                    }
+                }
+                Ok(CreateSubOrganizationIntentV5 {
+                    sub_organization_name: sub_organization_name__.unwrap_or_default(),
+                    root_users: root_users__.unwrap_or_default(),
+                    root_quorum_threshold: root_quorum_threshold__.unwrap_or_default(),
+                    wallet: wallet__,
+                    disable_email_recovery: disable_email_recovery__,
+                    disable_email_auth: disable_email_auth__,
+                })
+            }
+        }
+        deserializer.deserialize_struct("immutable.activity.v1.CreateSubOrganizationIntentV5", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for CreateSubOrganizationResult {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>

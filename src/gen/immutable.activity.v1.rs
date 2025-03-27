@@ -715,6 +715,28 @@ pub struct CreateSubOrganizationIntentV4 {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateSubOrganizationIntentV5 {
+    /// @inject_tag: validate:"omitempty,tk_label,tk_label_length"
+    #[prost(string, tag="1")]
+    pub sub_organization_name: ::prost::alloc::string::String,
+    /// @inject_tag: validate:"required"
+    #[prost(message, repeated, tag="2")]
+    pub root_users: ::prost::alloc::vec::Vec<RootUserParamsV2>,
+    /// @inject_tag: validate:"required"
+    #[prost(int32, tag="3")]
+    pub root_quorum_threshold: i32,
+    /// @inject_tag: validate:"omitempty"
+    #[prost(message, optional, tag="4")]
+    pub wallet: ::core::option::Option<WalletParams>,
+    /// @inject_tag: validate:"omitempty"
+    #[prost(bool, optional, tag="5")]
+    pub disable_email_recovery: ::core::option::Option<bool>,
+    /// @inject_tag: validate:"omitempty"
+    #[prost(bool, optional, tag="6")]
+    pub disable_email_auth: ::core::option::Option<bool>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdatePolicyIntent {
     /// @inject_tag: validate:"uuid"
     #[prost(string, tag="1")]
