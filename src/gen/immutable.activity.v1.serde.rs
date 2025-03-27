@@ -11793,6 +11793,115 @@ impl<'de> serde::Deserialize<'de> for InvitationParams {
         deserializer.deserialize_struct("immutable.activity.v1.InvitationParams", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for OauthProviderParams {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.OauthProviderParams", len)?;
+        if true {
+            struct_ser.serialize_field("providerName", &self.provider_name)?;
+        }
+        if true {
+            struct_ser.serialize_field("oidcToken", &self.oidc_token)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for OauthProviderParams {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "provider_name",
+            "providerName",
+            "oidcToken",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            ProviderName,
+            OidcToken,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "providerName" | "provider_name" => Ok(GeneratedField::ProviderName),
+                            "oidcToken" => Ok(GeneratedField::OidcToken),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = OauthProviderParams;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct immutable.activity.v1.OauthProviderParams")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<OauthProviderParams, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut provider_name__ = None;
+                let mut oidc_token__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::ProviderName => {
+                            if provider_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("providerName"));
+                            }
+                            provider_name__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::OidcToken => {
+                            if oidc_token__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("oidcToken"));
+                            }
+                            oidc_token__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(OauthProviderParams {
+                    provider_name: provider_name__.unwrap_or_default(),
+                    oidc_token: oidc_token__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("immutable.activity.v1.OauthProviderParams", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for PrivateKeyParams {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -13483,6 +13592,168 @@ impl<'de> serde::Deserialize<'de> for RootUserParams {
             }
         }
         deserializer.deserialize_struct("immutable.activity.v1.RootUserParams", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for RootUserParamsV2 {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.RootUserParamsV2", len)?;
+        if true {
+            struct_ser.serialize_field("userName", &self.user_name)?;
+        }
+        if let Some(v) = self.user_email.as_ref() {
+            struct_ser.serialize_field("userEmail", v)?;
+        }
+        if true {
+            struct_ser.serialize_field("apiKeys", &self.api_keys)?;
+        }
+        if true {
+            struct_ser.serialize_field("authenticators", &self.authenticators)?;
+        }
+        if true {
+            struct_ser.serialize_field("oauthProviders", &self.oauth_providers)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for RootUserParamsV2 {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "user_name",
+            "userName",
+            "user_email",
+            "userEmail",
+            "api_keys",
+            "apiKeys",
+            "authenticators",
+            "oauthProviders",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            UserName,
+            UserEmail,
+            ApiKeys,
+            Authenticators,
+            OauthProviders,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "userName" | "user_name" => Ok(GeneratedField::UserName),
+                            "userEmail" | "user_email" => Ok(GeneratedField::UserEmail),
+                            "apiKeys" | "api_keys" => Ok(GeneratedField::ApiKeys),
+                            "authenticators" => Ok(GeneratedField::Authenticators),
+                            "oauthProviders" => Ok(GeneratedField::OauthProviders),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = RootUserParamsV2;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct immutable.activity.v1.RootUserParamsV2")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<RootUserParamsV2, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut user_name__ = None;
+                let mut user_email__ = None;
+                let mut api_keys__ = None;
+                let mut authenticators__ = None;
+                let mut oauth_providers__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::UserName => {
+                            if user_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("userName"));
+                            }
+                            user_name__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::UserEmail => {
+                            if user_email__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("userEmail"));
+                            }
+                            user_email__ = map_.next_value()?;
+                        }
+                        GeneratedField::ApiKeys => {
+                            if api_keys__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("apiKeys"));
+                            }
+                            api_keys__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Authenticators => {
+                            if authenticators__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("authenticators"));
+                            }
+                            authenticators__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::OauthProviders => {
+                            if oauth_providers__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("oauthProviders"));
+                            }
+                            oauth_providers__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(RootUserParamsV2 {
+                    user_name: user_name__.unwrap_or_default(),
+                    user_email: user_email__,
+                    api_keys: api_keys__.unwrap_or_default(),
+                    authenticators: authenticators__.unwrap_or_default(),
+                    oauth_providers: oauth_providers__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("immutable.activity.v1.RootUserParamsV2", FIELDS, GeneratedVisitor)
     }
 }
 impl serde::Serialize for Selector {

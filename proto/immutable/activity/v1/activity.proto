@@ -1437,6 +1437,43 @@ message RootUserParams {
   ];
 }
 
+message RootUserParamsV2 {
+  // @inject_tag: validate:"required,tk_label_length,tk_label"
+  string user_name = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Human-readable name for a User.",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"omitempty,email,tk_email"
+  optional string user_email = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The user's email address."}];
+  // @inject_tag: validate:"dive"
+  repeated ApiKeyParams api_keys = 5 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A list of API Key parameters.",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"dive"
+  repeated AuthenticatorParamsV2 authenticators = 6 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A list of Authenticator parameters.",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"dive"
+  repeated OauthProviderParams oauthProviders = 7 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A list of Oauth providers.",
+      title: ""
+    }
+  ];
+}
+
 // Each of these customization parameters are optional; resort to defaults if any are not provided.
 message EmailCustomizationParams {
   optional string app_name = 1 [
@@ -2313,6 +2350,25 @@ message AuthenticatorParamsV2 {
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "The attestation that proves custody of the authenticator and provides metadata about it.",
+      title: ""
+    }
+  ];
+}
+
+message OauthProviderParams {
+  // @inject_tag: validate:"required,tk_label_length,tk_label"
+  string provider_name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Human-readable name to identify a Provider.",
+      title: ""
+    }
+  ];
+  // @inject_tag: validate:"required"
+  string oidcToken = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Base64 encoded OIDC token",
       title: ""
     }
   ];

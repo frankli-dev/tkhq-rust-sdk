@@ -815,6 +815,25 @@ pub struct RootUserParams {
     #[prost(message, repeated, tag="6")]
     pub authenticators: ::prost::alloc::vec::Vec<AuthenticatorParamsV2>,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct RootUserParamsV2 {
+    /// @inject_tag: validate:"required,tk_label_length,tk_label"
+    #[prost(string, tag="2")]
+    pub user_name: ::prost::alloc::string::String,
+    /// @inject_tag: validate:"omitempty,email,tk_email"
+    #[prost(string, optional, tag="3")]
+    pub user_email: ::core::option::Option<::prost::alloc::string::String>,
+    /// @inject_tag: validate:"dive"
+    #[prost(message, repeated, tag="5")]
+    pub api_keys: ::prost::alloc::vec::Vec<ApiKeyParams>,
+    /// @inject_tag: validate:"dive"
+    #[prost(message, repeated, tag="6")]
+    pub authenticators: ::prost::alloc::vec::Vec<AuthenticatorParamsV2>,
+    /// @inject_tag: validate:"dive"
+    #[prost(message, repeated, tag="7")]
+    pub oauth_providers: ::prost::alloc::vec::Vec<OauthProviderParams>,
+}
 /// Each of these customization parameters are optional; resort to defaults if any are not provided.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -1487,6 +1506,16 @@ pub struct AuthenticatorParamsV2 {
     pub challenge: ::prost::alloc::string::String,
     #[prost(message, optional, tag="3")]
     pub attestation: ::core::option::Option<Attestation>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct OauthProviderParams {
+    /// @inject_tag: validate:"required,tk_label_length,tk_label"
+    #[prost(string, tag="1")]
+    pub provider_name: ::prost::alloc::string::String,
+    /// @inject_tag: validate:"required"
+    #[prost(string, tag="2")]
+    pub oidc_token: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

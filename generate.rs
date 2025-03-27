@@ -10,6 +10,7 @@ fn main() -> Result<()> {
         PathBuf::from(std::env::var("OUT_DIR").unwrap()).join("proto_descriptor.bin");
 
     prost_build::Config::new()
+        .protoc_arg("--experimental_allow_proto3_optional")
         .file_descriptor_set_path(&descriptor_path)
         .compile_well_known_types()
         .extern_path(".google.protobuf", "::pbjson_types")
