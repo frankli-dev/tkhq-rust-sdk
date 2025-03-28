@@ -2773,7 +2773,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                     curve: curve__.unwrap_or_default().to_string(),
                     path_format: path_format__.unwrap_or_default().to_string(),
                     path: path__.unwrap_or_default(),
-                    address_format: address_format__.unwrap_or_default(),
+                    address_format: address_format__.unwrap_or_default().to_string(),
                     address: address__.unwrap_or_default(),
                     created_at: created_at__,
                     updated_at: updated_at__,
