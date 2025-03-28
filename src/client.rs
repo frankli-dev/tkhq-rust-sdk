@@ -140,10 +140,12 @@ impl TurnkeyClient {
         let request = self
             .client
             .post(&url)
-            .header("X-Stamp", stamp)
+            .header("X-Stamp", stamp.clone())
             .body(body_str.clone())
             .build()
             .map_err(TurnkeyError::HttpError)?;
+
+        println!("{:?} {:?} {:?}", url, stamp.clone(), body_str);
 
         log::debug!(
             "sending turnkey post request, url: {}, body: {}",
