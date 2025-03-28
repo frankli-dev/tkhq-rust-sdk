@@ -283,26 +283,28 @@ impl TagType {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalletAccount {
     #[prost(string, tag="1")]
-    pub organization_id: ::prost::alloc::string::String,
+    pub wallet_account_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
-    pub wallet_id: ::prost::alloc::string::String,
+    pub organization_id: ::prost::alloc::string::String,
     #[prost(string, tag="3")]
-    pub curve: ::prost::alloc::string::String,
+    pub wallet_id: ::prost::alloc::string::String,
     #[prost(string, tag="4")]
-    pub path_format: ::prost::alloc::string::String,
+    pub curve: ::prost::alloc::string::String,
     #[prost(string, tag="5")]
-    pub path: ::prost::alloc::string::String,
+    pub path_format: ::prost::alloc::string::String,
     #[prost(string, tag="6")]
-    pub address_format: ::prost::alloc::string::String,
+    pub path: ::prost::alloc::string::String,
     #[prost(string, tag="7")]
+    pub address_format: ::prost::alloc::string::String,
+    #[prost(string, tag="8")]
     pub address: ::prost::alloc::string::String,
-    #[prost(message, optional, tag="8")]
+    #[prost(message, optional, tag="9")]
     pub created_at: ::core::option::Option<Timestamp>,
     /// TODO(tim): temporarily removing this since it's always "false"
     /// bool exported = 10 [
     ///   (google.api.field_behavior) = REQUIRED,
     ///   (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "True when a given Account is exported, false otherwise."}
     /// ];
-    #[prost(message, optional, tag="9")]
+    #[prost(message, optional, tag="10")]
     pub updated_at: ::core::option::Option<Timestamp>,
 }

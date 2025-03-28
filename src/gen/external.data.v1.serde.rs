@@ -2579,7 +2579,13 @@ impl serde::Serialize for WalletAccount {
         if true {
             len += 1;
         }
+        if true {
+            len += 1;
+        }
         let mut struct_ser = serializer.serialize_struct("external.data.v1.WalletAccount", len)?;
+        if true {
+            struct_ser.serialize_field("walletAccountId", &self.wallet_account_id)?;
+        }
         if true {
             struct_ser.serialize_field("organizationId", &self.organization_id)?;
         }
@@ -2617,6 +2623,8 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
         D: serde::Deserializer<'de>,
     {
         const FIELDS: &[&str] = &[
+            "wallet_account_id",
+            "walletAccountId",
             "organization_id",
             "organizationId",
             "wallet_id",
@@ -2636,6 +2644,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
 
         #[allow(clippy::enum_variant_names)]
         enum GeneratedField {
+            WalletAccountId,
             OrganizationId,
             WalletId,
             Curve,
@@ -2666,6 +2675,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                         E: serde::de::Error,
                     {
                         match value {
+                            "walletAccountId" | "wallet_account_id" => Ok(GeneratedField::WalletAccountId),
                             "organizationId" | "organization_id" => Ok(GeneratedField::OrganizationId),
                             "walletId" | "wallet_id" => Ok(GeneratedField::WalletId),
                             "curve" => Ok(GeneratedField::Curve),
@@ -2694,6 +2704,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                 where
                     V: serde::de::MapAccess<'de>,
             {
+                let mut wallet_account_id__ = None;
                 let mut organization_id__ = None;
                 let mut wallet_id__ = None;
                 let mut curve__ = None;
@@ -2705,6 +2716,12 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                 let mut updated_at__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
+                        GeneratedField::WalletAccountId => {
+                            if wallet_account_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("walletAccountId"));
+                            }
+                            wallet_account_id__ = Some(map_.next_value()?);
+                        }
                         GeneratedField::OrganizationId => {
                             if organization_id__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("organizationId"));
@@ -2762,6 +2779,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                     }
                 }
                 Ok(WalletAccount {
+                    wallet_account_id: wallet_account_id__.unwrap_or_default(),
                     organization_id: organization_id__.unwrap_or_default(),
                     wallet_id: wallet_id__.unwrap_or_default(),
                     curve: curve__.unwrap_or_default(),
