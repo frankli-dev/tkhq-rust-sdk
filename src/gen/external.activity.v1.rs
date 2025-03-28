@@ -7,12 +7,10 @@ pub struct Activity {
     pub id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub organization_id: ::prost::alloc::string::String,
-    // #[prost(enumeration="super::super::super::immutable::activity::v1::ActivityStatus", tag="3")]
-    #[prost(string, tag="3")]
-    pub status: ::prost::alloc::string::String,
-    // #[prost(enumeration="super::super::super::immutable::activity::v1::ActivityType", tag="4")]
-    #[prost(string, tag="4")]
-    pub r#type: ::prost::alloc::string::String,
+    #[prost(enumeration="super::super::super::immutable::activity::v1::ActivityStatus", tag="3")]
+    pub status: i32,
+    #[prost(enumeration="super::super::super::immutable::activity::v1::ActivityType", tag="4")]
+    pub r#type: i32,
     #[prost(message, optional, tag="5")]
     pub intent: ::core::option::Option<super::super::super::immutable::activity::v1::Intent>,
     #[prost(message, optional, tag="6")]
