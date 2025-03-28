@@ -286,14 +286,14 @@ pub struct WalletAccount {
     pub organization_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub wallet_id: ::prost::alloc::string::String,
-    #[prost(enumeration="super::super::super::immutable::common::v1::Curve", tag="3")]
-    pub curve: i32,
-    #[prost(enumeration="super::super::super::immutable::common::v1::PathFormat", tag="4")]
-    pub path_format: i32,
+    #[prost(string, tag="3")]
+    pub curve: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub path_format: ::prost::alloc::string::String,
     #[prost(string, tag="5")]
     pub path: ::prost::alloc::string::String,
-    #[prost(enumeration="super::super::super::immutable::common::v1::AddressFormat", tag="6")]
-    pub address_format: i32,
+    #[prost(string, tag="6")]
+    pub address_format: ::prost::alloc::string::String,
     #[prost(string, tag="7")]
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="8")]

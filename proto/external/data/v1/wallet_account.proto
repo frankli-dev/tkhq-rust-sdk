@@ -19,11 +19,11 @@ message WalletAccount {
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The Wallet the Account was derived from."}
   ];
-  immutable.common.v1.Curve curve = 3 [
+  string curve = 3 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Cryptographic curve used to generate the Account."}
   ];
-  immutable.common.v1.PathFormat path_format = 4 [
+  string path_format = 4 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Path format used to generate the Account."}
   ];
@@ -31,7 +31,7 @@ message WalletAccount {
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Path used to generate the Account."}
   ];
-  immutable.common.v1.AddressFormat address_format = 6 [
+  string address_format = 6 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Address format used to generate the Acccount.",
