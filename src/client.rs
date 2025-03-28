@@ -153,6 +153,10 @@ impl TurnkeyClient {
             body_str
         );
 
+        return Err(TurnkeyError::OtherError(format!(
+            "failed to parse response"
+        )));
+
         let response = self
             .client
             .execute(request)
