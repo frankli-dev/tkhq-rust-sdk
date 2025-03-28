@@ -704,6 +704,7 @@ impl serde::Serialize for ActivityType {
             Self::CreatePolicies => "ACTIVITY_TYPE_CREATE_POLICIES",
             Self::SignRawPayloads => "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS",
             Self::CreateReadOnlySession => "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION",
+            Self::DeleteSubOrganization => "ACTIVITY_TYPE_DELETE_SUB_ORGANIZATION",
             Self::CreateSubOrganizationV5 => "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5",
         };
         serializer.serialize_str(variant)
@@ -781,6 +782,7 @@ impl<'de> serde::Deserialize<'de> for ActivityType {
             "ACTIVITY_TYPE_CREATE_POLICIES",
             "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS",
             "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION",
+            "ACTIVITY_TYPE_DELETE_SUB_ORGANIZATION",
             "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5",
         ];
 
@@ -887,6 +889,7 @@ impl<'de> serde::Deserialize<'de> for ActivityType {
                     "ACTIVITY_TYPE_CREATE_POLICIES" => Ok(ActivityType::CreatePolicies),
                     "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS" => Ok(ActivityType::SignRawPayloads),
                     "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION" => Ok(ActivityType::CreateReadOnlySession),
+                    "ACTIVITY_TYPE_DELETE_SUB_ORGANIZATION" => Ok(ActivityType::DeleteSubOrganization),
                     "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5" => Ok(ActivityType::CreateSubOrganizationV5),
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
                 }
@@ -8140,6 +8143,189 @@ impl<'de> serde::Deserialize<'de> for DeletePrivateKeyTagsResult {
         deserializer.deserialize_struct("immutable.activity.v1.DeletePrivateKeyTagsResult", FIELDS, GeneratedVisitor)
     }
 }
+impl serde::Serialize for DeleteSubOrganizationIntent {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.DeleteSubOrganizationIntent", len)?;
+        if let Some(v) = self.delete_without_export.as_ref() {
+            struct_ser.serialize_field("deleteWithoutExport", v)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for DeleteSubOrganizationIntent {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "deleteWithoutExport",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            DeleteWithoutExport,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "deleteWithoutExport" => Ok(GeneratedField::DeleteWithoutExport),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = DeleteSubOrganizationIntent;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct immutable.activity.v1.DeleteSubOrganizationIntent")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<DeleteSubOrganizationIntent, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut delete_without_export__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::DeleteWithoutExport => {
+                            if delete_without_export__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("deleteWithoutExport"));
+                            }
+                            delete_without_export__ = map_.next_value()?;
+                        }
+                    }
+                }
+                Ok(DeleteSubOrganizationIntent {
+                    delete_without_export: delete_without_export__,
+                })
+            }
+        }
+        deserializer.deserialize_struct("immutable.activity.v1.DeleteSubOrganizationIntent", FIELDS, GeneratedVisitor)
+    }
+}
+impl serde::Serialize for DeleteSubOrganizationResult {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.DeleteSubOrganizationResult", len)?;
+        if true {
+            struct_ser.serialize_field("subOrganizationId", &self.sub_organization_id)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for DeleteSubOrganizationResult {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "sub_organization_id",
+            "subOrganizationId",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            SubOrganizationId,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "subOrganizationId" | "sub_organization_id" => Ok(GeneratedField::SubOrganizationId),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = DeleteSubOrganizationResult;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct immutable.activity.v1.DeleteSubOrganizationResult")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<DeleteSubOrganizationResult, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut sub_organization_id__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::SubOrganizationId => {
+                            if sub_organization_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("subOrganizationId"));
+                            }
+                            sub_organization_id__ = Some(map_.next_value()?);
+                        }
+                    }
+                }
+                Ok(DeleteSubOrganizationResult {
+                    sub_organization_id: sub_organization_id__.unwrap_or_default(),
+                })
+            }
+        }
+        deserializer.deserialize_struct("immutable.activity.v1.DeleteSubOrganizationResult", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for DeleteUserTagsIntent {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -11167,6 +11353,9 @@ impl serde::Serialize for Intent {
                 intent::Inner::CreateReadOnlySessionIntent(v) => {
                     struct_ser.serialize_field("createReadOnlySessionIntent", v)?;
                 }
+                intent::Inner::DeleteSubOrganizationIntent(v) => {
+                    struct_ser.serialize_field("deleteSubOrganizationIntent", v)?;
+                }
                 intent::Inner::CreateSubOrganizationIntentV5(v) => {
                     struct_ser.serialize_field("createSubOrganizationIntentV5", v)?;
                 }
@@ -11310,6 +11499,8 @@ impl<'de> serde::Deserialize<'de> for Intent {
             "signRawPayloadsIntent",
             "create_read_only_session_intent",
             "createReadOnlySessionIntent",
+            "delete_sub_organization_intent",
+            "deleteSubOrganizationIntent",
             "create_sub_organization_intent_v5",
             "createSubOrganizationIntentV5",
         ];
@@ -11380,6 +11571,7 @@ impl<'de> serde::Deserialize<'de> for Intent {
             CreatePoliciesIntent,
             SignRawPayloadsIntent,
             CreateReadOnlySessionIntent,
+            DeleteSubOrganizationIntent,
             CreateSubOrganizationIntentV5,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -11466,6 +11658,7 @@ impl<'de> serde::Deserialize<'de> for Intent {
                             "createPoliciesIntent" | "create_policies_intent" => Ok(GeneratedField::CreatePoliciesIntent),
                             "signRawPayloadsIntent" | "sign_raw_payloads_intent" => Ok(GeneratedField::SignRawPayloadsIntent),
                             "createReadOnlySessionIntent" | "create_read_only_session_intent" => Ok(GeneratedField::CreateReadOnlySessionIntent),
+                            "deleteSubOrganizationIntent" | "delete_sub_organization_intent" => Ok(GeneratedField::DeleteSubOrganizationIntent),
                             "createSubOrganizationIntentV5" | "create_sub_organization_intent_v5" => Ok(GeneratedField::CreateSubOrganizationIntentV5),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
@@ -11935,6 +12128,13 @@ impl<'de> serde::Deserialize<'de> for Intent {
                                 return Err(serde::de::Error::duplicate_field("createReadOnlySessionIntent"));
                             }
                             inner__ = map_.next_value::<::std::option::Option<_>>()?.map(intent::Inner::CreateReadOnlySessionIntent)
+;
+                        }
+                        GeneratedField::DeleteSubOrganizationIntent => {
+                            if inner__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("deleteSubOrganizationIntent"));
+                            }
+                            inner__ = map_.next_value::<::std::option::Option<_>>()?.map(intent::Inner::DeleteSubOrganizationIntent)
 ;
                         }
                         GeneratedField::CreateSubOrganizationIntentV5 => {
@@ -13135,6 +13335,9 @@ impl serde::Serialize for Result {
                 result::Inner::CreateReadOnlySessionResult(v) => {
                     struct_ser.serialize_field("createReadOnlySessionResult", v)?;
                 }
+                result::Inner::DeleteSubOrganizationResult(v) => {
+                    struct_ser.serialize_field("deleteSubOrganizationResult", v)?;
+                }
                 result::Inner::CreateSubOrganizationResultV5(v) => {
                     struct_ser.serialize_field("createSubOrganizationResultV5", v)?;
                 }
@@ -13254,6 +13457,8 @@ impl<'de> serde::Deserialize<'de> for Result {
             "signRawPayloadsResult",
             "create_read_only_session_result",
             "createReadOnlySessionResult",
+            "delete_sub_organization_result",
+            "deleteSubOrganizationResult",
             "create_sub_organization_result_v5",
             "createSubOrganizationResultV5",
         ];
@@ -13312,6 +13517,7 @@ impl<'de> serde::Deserialize<'de> for Result {
             CreatePoliciesResult,
             SignRawPayloadsResult,
             CreateReadOnlySessionResult,
+            DeleteSubOrganizationResult,
             CreateSubOrganizationResultV5,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
@@ -13386,6 +13592,7 @@ impl<'de> serde::Deserialize<'de> for Result {
                             "createPoliciesResult" | "create_policies_result" => Ok(GeneratedField::CreatePoliciesResult),
                             "signRawPayloadsResult" | "sign_raw_payloads_result" => Ok(GeneratedField::SignRawPayloadsResult),
                             "createReadOnlySessionResult" | "create_read_only_session_result" => Ok(GeneratedField::CreateReadOnlySessionResult),
+                            "deleteSubOrganizationResult" | "delete_sub_organization_result" => Ok(GeneratedField::DeleteSubOrganizationResult),
                             "createSubOrganizationResultV5" | "create_sub_organization_result_v5" => Ok(GeneratedField::CreateSubOrganizationResultV5),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
@@ -13771,6 +13978,13 @@ impl<'de> serde::Deserialize<'de> for Result {
                                 return Err(serde::de::Error::duplicate_field("createReadOnlySessionResult"));
                             }
                             inner__ = map_.next_value::<::std::option::Option<_>>()?.map(result::Inner::CreateReadOnlySessionResult)
+;
+                        }
+                        GeneratedField::DeleteSubOrganizationResult => {
+                            if inner__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("deleteSubOrganizationResult"));
+                            }
+                            inner__ = map_.next_value::<::std::option::Option<_>>()?.map(result::Inner::DeleteSubOrganizationResult)
 ;
                         }
                         GeneratedField::CreateSubOrganizationResultV5 => {

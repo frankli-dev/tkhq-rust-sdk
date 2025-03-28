@@ -85,6 +85,7 @@ enum ActivityType {
   ACTIVITY_TYPE_CREATE_POLICIES = 62;
   ACTIVITY_TYPE_SIGN_RAW_PAYLOADS = 63;
   ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION = 64;
+  ACTIVITY_TYPE_DELETE_SUB_ORGANIZATION = 65;
   ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5 = 67;
 }
 
@@ -166,6 +167,7 @@ message Intent {
     CreatePoliciesIntent create_policies_intent = 63;
     SignRawPayloadsIntent sign_raw_payloads_intent = 64;
     CreateReadOnlySessionIntent create_read_only_session_intent = 65;
+    DeleteSubOrganizationIntent delete_sub_organization_intent = 66;
     CreateSubOrganizationIntentV5 create_sub_organization_intent_v5 = 68;
   }
 }
@@ -1284,6 +1286,15 @@ message CreateSubOrganizationIntentV5 {
   }];
 }
 
+message DeleteSubOrganizationIntent {
+  // @inject_tag: validate:"omitempty"
+  optional bool deleteWithoutExport = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Sub-organization deletion, by default, requires associated wallets and private keys to be exported for security reasons. Set this boolean to true to force sub-organization deletion even if some wallets or private keys within it have not been exported yet. Default: false.",
+    title: ""
+  }];
+}
+
+
 message UpdatePolicyIntent {
   // @inject_tag: validate:"uuid"
   string policy_id = 1 [
@@ -1755,6 +1766,7 @@ message Result {
     CreatePoliciesResult create_policies_result = 51;
     SignRawPayloadsResult sign_raw_payloads_result = 52;
     CreateReadOnlySessionResult create_read_only_session_result = 53;
+    DeleteSubOrganizationResult delete_sub_organization_result = 54;
     CreateSubOrganizationResultV5 create_sub_organization_result_v5 = 56;
   }
 }
@@ -2133,6 +2145,10 @@ message CreateSubOrganizationResultV5 {
   optional WalletResult wallet = 2;
 
   repeated string root_user_ids = 3;
+}
+
+message DeleteSubOrganizationResult {
+  string sub_organization_id = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 message RecoverUserResult {

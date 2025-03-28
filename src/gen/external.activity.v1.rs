@@ -489,6 +489,18 @@ pub struct CreateSubOrganizationRequest {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteSubOrganizationRequest {
+    #[prost(string, tag="1")]
+    pub r#type: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub timestamp_ms: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub organization_id: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="4")]
+    pub parameters: ::core::option::Option<super::super::super::immutable::activity::v1::DeleteSubOrganizationIntent>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct InitUserEmailRecoveryRequest {
     #[prost(string, tag="1")]
     pub r#type: ::prost::alloc::string::String,

@@ -556,6 +556,13 @@ declare_rpc!(
 );
 
 declare_rpc!(
+    DeleteSubOrganization,
+    "/public/v1/submit/delete_sub_organization",
+    activity::DeleteSubOrganizationRequest,
+    api::ActivityResponse
+);
+
+declare_rpc!(
     InitUserEmailRecovery,
     "/public/v1/submit/init_user_email_recovery",
     activity::InitUserEmailRecoveryRequest,

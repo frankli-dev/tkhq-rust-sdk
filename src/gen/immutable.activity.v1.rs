@@ -3,7 +3,7 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Intent {
-    #[prost(oneof="intent::Inner", tags="1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 68")]
+    #[prost(oneof="intent::Inner", tags="1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 68")]
     pub inner: ::core::option::Option<intent::Inner>,
 }
 /// Nested message and enum types in `Intent`.
@@ -139,6 +139,8 @@ pub mod intent {
         SignRawPayloadsIntent(super::SignRawPayloadsIntent),
         #[prost(message, tag="65")]
         CreateReadOnlySessionIntent(super::CreateReadOnlySessionIntent),
+        #[prost(message, tag="66")]
+        DeleteSubOrganizationIntent(super::DeleteSubOrganizationIntent),
         #[prost(message, tag="68")]
         CreateSubOrganizationIntentV5(super::CreateSubOrganizationIntentV5),
     }
@@ -739,6 +741,13 @@ pub struct CreateSubOrganizationIntentV5 {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteSubOrganizationIntent {
+    /// @inject_tag: validate:"omitempty"
+    #[prost(bool, optional, tag="1")]
+    pub delete_without_export: ::core::option::Option<bool>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdatePolicyIntent {
     /// @inject_tag: validate:"uuid"
     #[prost(string, tag="1")]
@@ -951,7 +960,7 @@ pub struct ImportPrivateKeyIntent {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Result {
-    #[prost(oneof="result::Inner", tags="1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 56")]
+    #[prost(oneof="result::Inner", tags="1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 56")]
     pub inner: ::core::option::Option<result::Inner>,
 }
 /// Nested message and enum types in `Result`.
@@ -1063,6 +1072,8 @@ pub mod result {
         SignRawPayloadsResult(super::SignRawPayloadsResult),
         #[prost(message, tag="53")]
         CreateReadOnlySessionResult(super::CreateReadOnlySessionResult),
+        #[prost(message, tag="54")]
+        DeleteSubOrganizationResult(super::DeleteSubOrganizationResult),
         #[prost(message, tag="56")]
         CreateSubOrganizationResultV5(super::CreateSubOrganizationResultV5),
     }
@@ -1396,6 +1407,12 @@ pub struct CreateSubOrganizationResultV5 {
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteSubOrganizationResult {
+    #[prost(string, tag="1")]
+    pub sub_organization_id: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RecoverUserResult {
     #[prost(string, repeated, tag="1")]
     pub authenticator_id: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
@@ -1723,6 +1740,7 @@ pub enum ActivityType {
     CreatePolicies = 62,
     SignRawPayloads = 63,
     CreateReadOnlySession = 64,
+    DeleteSubOrganization = 65,
     CreateSubOrganizationV5 = 67,
 }
 impl ActivityType {
@@ -1797,6 +1815,7 @@ impl ActivityType {
             ActivityType::CreatePolicies => "ACTIVITY_TYPE_CREATE_POLICIES",
             ActivityType::SignRawPayloads => "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS",
             ActivityType::CreateReadOnlySession => "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION",
+            ActivityType::DeleteSubOrganization => "ACTIVITY_TYPE_DELETE_SUB_ORGANIZATION",
             ActivityType::CreateSubOrganizationV5 => "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5",
         }
     }
@@ -1868,6 +1887,7 @@ impl ActivityType {
             "ACTIVITY_TYPE_CREATE_POLICIES" => Some(Self::CreatePolicies),
             "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS" => Some(Self::SignRawPayloads),
             "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION" => Some(Self::CreateReadOnlySession),
+            "ACTIVITY_TYPE_DELETE_SUB_ORGANIZATION" => Some(Self::DeleteSubOrganization),
             "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5" => Some(Self::CreateSubOrganizationV5),
             _ => None,
         }

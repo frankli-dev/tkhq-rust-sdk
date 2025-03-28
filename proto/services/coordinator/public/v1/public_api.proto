@@ -866,6 +866,18 @@ service PublicApiService {
     };
   }
 
+  rpc DeleteSubOrganization(external.activity.v1.DeleteSubOrganizationRequest) returns (ActivityResponse) {
+    option (google.api.http) = {
+      post: "/public/v1/submit/delete_sub_organization"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      description: "Delete a Sub-Organization";
+      summary: "Delete Sub-Organization";
+      tags: "Organizations";
+    };
+  }
+
   rpc InitUserEmailRecovery(external.activity.v1.InitUserEmailRecoveryRequest) returns (ActivityResponse) {
     option (google.api.http) = {
       post: "/public/v1/submit/init_user_email_recovery"
