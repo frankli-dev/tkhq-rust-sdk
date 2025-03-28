@@ -1637,17 +1637,17 @@ pub struct WalletParams {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalletAccountParams {
     /// @inject_tag: validate:"required"
-    #[prost(enumeration="super::super::common::v1::Curve", tag="1")]
-    pub curve: i32,
+    #[prost(string, tag="1")]
+    pub curve: ::prost::alloc::string::String,
     /// @inject_tag: validate:"required"
-    #[prost(enumeration="super::super::common::v1::PathFormat", tag="2")]
-    pub path_format: i32,
+    #[prost(string, tag="2")]
+    pub path_format: ::prost::alloc::string::String,
     /// @inject_tag: validate:"required"
     #[prost(string, tag="3")]
     pub path: ::prost::alloc::string::String,
     /// @inject_tag: validate:"required"
-    #[prost(enumeration="super::super::common::v1::AddressFormat", tag="4")]
-    pub address_format: i32,
+    #[prost(string, tag="4")]
+    pub address_format: ::prost::alloc::string::String,
 }
 //
 // These are all of the types of user-facing activities on Turnkey.

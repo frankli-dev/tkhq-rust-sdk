@@ -2604,7 +2604,7 @@ message WalletParams {
 
 message WalletAccountParams {
   // @inject_tag: validate:"required"
-  immutable.common.v1.Curve curve = 1 [
+  string curve = 1 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Cryptographic curve used to generate a wallet Account.",
@@ -2612,7 +2612,7 @@ message WalletAccountParams {
     }
   ];
   // @inject_tag: validate:"required"
-  immutable.common.v1.PathFormat path_format = 2 [
+  string path_format = 2 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Path format used to generate a wallet Account.",
@@ -2628,7 +2628,7 @@ message WalletAccountParams {
     }
   ];
   // @inject_tag: validate:"required"
-  immutable.common.v1.AddressFormat address_format = 4 [
+  string address_format = 4 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "Address format used to generate a wallet Acccount.",

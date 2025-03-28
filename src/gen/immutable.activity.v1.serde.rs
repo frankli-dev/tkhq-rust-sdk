@@ -17701,22 +17701,16 @@ impl serde::Serialize for WalletAccountParams {
         }
         let mut struct_ser = serializer.serialize_struct("immutable.activity.v1.WalletAccountParams", len)?;
         if true {
-            let v = super::super::common::v1::Curve::try_from(self.curve)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.curve)))?;
-            struct_ser.serialize_field("curve", &v)?;
+            struct_ser.serialize_field("curve", &self.curve)?;
         }
         if true {
-            let v = super::super::common::v1::PathFormat::try_from(self.path_format)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.path_format)))?;
-            struct_ser.serialize_field("pathFormat", &v)?;
+            struct_ser.serialize_field("pathFormat", &self.path_format)?;
         }
         if true {
             struct_ser.serialize_field("path", &self.path)?;
         }
         if true {
-            let v = super::super::common::v1::AddressFormat::try_from(self.address_format)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.address_format)))?;
-            struct_ser.serialize_field("addressFormat", &v)?;
+            struct_ser.serialize_field("addressFormat", &self.address_format)?;
         }
         struct_ser.end()
     }
@@ -17796,13 +17790,13 @@ impl<'de> serde::Deserialize<'de> for WalletAccountParams {
                             if curve__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("curve"));
                             }
-                            curve__ = Some(map_.next_value::<super::super::common::v1::Curve>()? as i32);
+                            curve__ = Some(map_.next_value()?);
                         }
                         GeneratedField::PathFormat => {
                             if path_format__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("pathFormat"));
                             }
-                            path_format__ = Some(map_.next_value::<super::super::common::v1::PathFormat>()? as i32);
+                            path_format__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Path => {
                             if path__.is_some() {
@@ -17814,7 +17808,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccountParams {
                             if address_format__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("addressFormat"));
                             }
-                            address_format__ = Some(map_.next_value::<super::super::common::v1::AddressFormat>()? as i32);
+                            address_format__ = Some(map_.next_value()?);
                         }
                     }
                 }
