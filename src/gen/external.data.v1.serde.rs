@@ -2587,22 +2587,22 @@ impl serde::Serialize for WalletAccount {
             struct_ser.serialize_field("walletId", &self.wallet_id)?;
         }
         if true {
-            let v = super::super::super::immutable::common::v1::Curve::try_from(self.curve)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.curve)))?;
-            struct_ser.serialize_field("curve", &v)?;
+            // let v = super::super::super::immutable::common::v1::Curve::try_from(self.curve)
+            //     .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.curve)))?;
+            struct_ser.serialize_field("curve", &self.curve)?;
         }
         if true {
-            let v = super::super::super::immutable::common::v1::PathFormat::try_from(self.path_format)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.path_format)))?;
-            struct_ser.serialize_field("pathFormat", &v)?;
+            // let v = super::super::super::immutable::common::v1::PathFormat::try_from(self.path_format)
+            //     .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.path_format)))?;
+            struct_ser.serialize_field("pathFormat", &self.path_format)?;
         }
         if true {
             struct_ser.serialize_field("path", &self.path)?;
         }
         if true {
-            let v = super::super::super::immutable::common::v1::AddressFormat::try_from(self.address_format)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.address_format)))?;
-            struct_ser.serialize_field("addressFormat", &v)?;
+            // let v = super::super::super::immutable::common::v1::AddressFormat::try_from(self.address_format)
+            //     .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.address_format)))?;
+            struct_ser.serialize_field("addressFormat", &self.address_format)?;
         }
         if true {
             struct_ser.serialize_field("address", &self.address)?;
@@ -2770,8 +2770,8 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                 Ok(WalletAccount {
                     organization_id: organization_id__.unwrap_or_default(),
                     wallet_id: wallet_id__.unwrap_or_default(),
-                    curve: curve__.unwrap_or_default(),
-                    path_format: path_format__.unwrap_or_default(),
+                    curve: curve__.unwrap_or_default().to_string(),
+                    path_format: path_format__.unwrap_or_default().to_string(),
                     path: path__.unwrap_or_default(),
                     address_format: address_format__.unwrap_or_default(),
                     address: address__.unwrap_or_default(),
