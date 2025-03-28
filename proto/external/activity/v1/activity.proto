@@ -732,7 +732,7 @@ message CreateSubOrganizationRequest {
   string type = 1 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      enum: ["ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V4"]
+      enum: ["ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5"]
     }
   ];
   string timestamp_ms = 2 [

@@ -1723,6 +1723,7 @@ pub enum ActivityType {
     CreatePolicies = 62,
     SignRawPayloads = 63,
     CreateReadOnlySession = 64,
+    CreateSubOrganizationV5 = 67,
 }
 impl ActivityType {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -1796,6 +1797,7 @@ impl ActivityType {
             ActivityType::CreatePolicies => "ACTIVITY_TYPE_CREATE_POLICIES",
             ActivityType::SignRawPayloads => "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS",
             ActivityType::CreateReadOnlySession => "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION",
+            ActivityType::CreateSubOrganizationV5 => "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1866,6 +1868,7 @@ impl ActivityType {
             "ACTIVITY_TYPE_CREATE_POLICIES" => Some(Self::CreatePolicies),
             "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS" => Some(Self::SignRawPayloads),
             "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION" => Some(Self::CreateReadOnlySession),
+            "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5" => Some(Self::CreateSubOrganizationV5),
             _ => None,
         }
     }

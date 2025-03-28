@@ -704,6 +704,7 @@ impl serde::Serialize for ActivityType {
             Self::CreatePolicies => "ACTIVITY_TYPE_CREATE_POLICIES",
             Self::SignRawPayloads => "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS",
             Self::CreateReadOnlySession => "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION",
+            Self::CreateSubOrganizationV5 => "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5",
         };
         serializer.serialize_str(variant)
     }
@@ -780,6 +781,7 @@ impl<'de> serde::Deserialize<'de> for ActivityType {
             "ACTIVITY_TYPE_CREATE_POLICIES",
             "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS",
             "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION",
+            "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5",
         ];
 
         struct GeneratedVisitor;
@@ -885,6 +887,7 @@ impl<'de> serde::Deserialize<'de> for ActivityType {
                     "ACTIVITY_TYPE_CREATE_POLICIES" => Ok(ActivityType::CreatePolicies),
                     "ACTIVITY_TYPE_SIGN_RAW_PAYLOADS" => Ok(ActivityType::SignRawPayloads),
                     "ACTIVITY_TYPE_CREATE_READ_ONLY_SESSION" => Ok(ActivityType::CreateReadOnlySession),
+                    "ACTIVITY_TYPE_CREATE_SUB_ORGANIZATION_V5" => Ok(ActivityType::CreateSubOrganizationV5),
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
                 }
             }
