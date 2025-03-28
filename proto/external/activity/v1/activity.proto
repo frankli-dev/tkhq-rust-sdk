@@ -21,11 +21,11 @@ message Activity {
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Unique identifier for a given Organization."}
   ];
-  immutable.activity.v1.ActivityStatus status = 3 [
+  string status = 3 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The current processing status of a specified Activity."}
   ];
-  immutable.activity.v1.ActivityType type = 4 [
+  string type = 4 [
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Type of Activity, such as Add User, or Sign Transaction."}
   ];

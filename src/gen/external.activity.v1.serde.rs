@@ -341,14 +341,10 @@ impl serde::Serialize for Activity {
             struct_ser.serialize_field("organizationId", &self.organization_id)?;
         }
         if true {
-            let v = super::super::super::immutable::activity::v1::ActivityStatus::try_from(self.status)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.status)))?;
-            struct_ser.serialize_field("status", &v)?;
+            struct_ser.serialize_field("status", &self.status)?;
         }
         if true {
-            let v = super::super::super::immutable::activity::v1::ActivityType::try_from(self.r#type)
-                .map_err(|_| serde::ser::Error::custom(format!("Invalid variant {}", self.r#type)))?;
-            struct_ser.serialize_field("type", &v)?;
+            struct_ser.serialize_field("type", &self.r#type)?;
         }
         if let Some(v) = self.intent.as_ref() {
             struct_ser.serialize_field("intent", v)?;
@@ -506,13 +502,13 @@ impl<'de> serde::Deserialize<'de> for Activity {
                             if status__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("status"));
                             }
-                            status__ = Some(map_.next_value::<super::super::super::immutable::activity::v1::ActivityStatus>()? as i32);
+                            status__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Type => {
                             if r#type__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("type"));
                             }
-                            r#type__ = Some(map_.next_value::<super::super::super::immutable::activity::v1::ActivityType>()? as i32);
+                            r#type__ = Some(map_.next_value()?);
                         }
                         GeneratedField::Intent => {
                             if intent__.is_some() {
