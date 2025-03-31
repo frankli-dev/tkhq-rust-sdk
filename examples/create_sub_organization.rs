@@ -2,9 +2,9 @@ use std::{env, process};
 
 use tkhq_rust_sdk::client::{self, CreateSubOrganization};
 use tkhq_rust_sdk::gen::external::activity::v1::CreateSubOrganizationRequest;
-use tkhq_rust_sdk::r#gen::immutable::activity::v1::CreateSubOrganizationIntentV5;
+use tkhq_rust_sdk::r#gen::immutable::activity::v1::{CreateSubOrganizationIntentV5, WalletAccountParams, WalletParams};
 use tkhq_rust_sdk::gen::immutable::activity::v1::{
-    ActivityType, ApiKeyParams, RootUserParams, RootUserParamsV2,
+    ActivityType, ApiKeyParams, RootUserParamsV2,
 };
 
 #[tokio::main]
@@ -27,7 +27,7 @@ async fn main() {
     let timestamp_ms = tk.request_timestamp_ms();
     let req = CreateSubOrganizationRequest {
         organization_id,
-        r#type: ActivityType::CreateSubOrganizationV4
+        r#type: ActivityType::CreateSubOrganizationV5
             .as_str_name()
             .to_owned(),
         timestamp_ms,
@@ -45,7 +45,19 @@ async fn main() {
                 authenticators: vec![],
             }],
             root_quorum_threshold: 1,
-            wallet: None,
+            wallet: Some(WalletParams {
+                wallet_name: "default".to_owned(),
+                accounts: vec![WalletAccountParams {
+                    // path_format: PathFormat::Bip32.into(),
+                    path_format: "PATH_FORMAT_BIP32".to_owned(),
+                    // curve: Curve::Ed25519.into(),
+                    curve: "CURVE_ED25519".to_owned(),
+                    path: "m/44'/501'/0'/0".to_owned(),
+                    // address_format: AddressFormat::Solana.into(),
+                    address_format: "ADDRESS_FORMAT_SOLANA".to_owned(),
+                }],
+                mnemonic_length: None,
+            }),
             disable_email_recovery: None,
             disable_email_auth: None,
         }),

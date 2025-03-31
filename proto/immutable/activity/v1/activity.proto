@@ -2148,7 +2148,7 @@ message CreateSubOrganizationResultV5 {
 }
 
 message DeleteSubOrganizationResult {
-  string sub_organization_id = 1 [(google.api.field_behavior) = REQUIRED];
+  string sub_organization_uuid = 1 [(google.api.field_behavior) = REQUIRED];
 }
 
 message RecoverUserResult {

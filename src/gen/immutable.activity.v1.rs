@@ -1409,7 +1409,7 @@ pub struct CreateSubOrganizationResultV5 {
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeleteSubOrganizationResult {
     #[prost(string, tag="1")]
-    pub sub_organization_id: ::prost::alloc::string::String,
+    pub sub_organization_uuid: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

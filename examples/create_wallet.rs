@@ -31,10 +31,13 @@ async fn main() {
         parameters: Some(CreateWalletIntent {
             wallet_name,
             accounts: vec![WalletAccountParams {
-                curve: Curve::Secp256k1.into(),
-                path_format: PathFormat::Bip32.into(),
+                // curve: Curve::Secp256k1.into(),
+                curve: "CURVE_SECP256K1".to_owned(),
+                // path_format: PathFormat::Bip32.into(),
+                path_format: "PATH_FORMAT_BIP32".to_owned(),
                 path: "m/44'/60'/0'/0/0".to_owned(),
-                address_format: AddressFormat::Ethereum.into(),
+                // address_format: AddressFormat::Ethereum.into(),
+                address_format: "ADDRESS_FORMAT_ETHEREUM".to_owned(),
             }],
             mnemonic_length: None,
         }),
