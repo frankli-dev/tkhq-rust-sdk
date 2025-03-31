@@ -145,7 +145,7 @@ impl TurnkeyClient {
             .build()
             .map_err(TurnkeyError::HttpError)?;
 
-        println!("{:?} {:?} {:?}", url, stamp.clone(), body_str);
+        // println!("{:?} {:?} {:?}", url, stamp.clone(), body_str);
 
         log::debug!(
             "sending turnkey post request, url: {}, body: {}",
@@ -163,8 +163,8 @@ impl TurnkeyClient {
         match status_response {
             Ok(_) => {
                 let response_body = response.text().await.map_err(TurnkeyError::HttpError)?;
-                println!("response body: {}", response_body);
-                println!("type: {}", std::any::type_name::<O>());
+                // println!("response body: {}", response_body);
+                // println!("type: {}", std::any::type_name::<O>());
                 match serde_json::from_str(&response_body) {
                     Ok(parsed) => {
                         return Ok(parsed);
