@@ -973,6 +973,203 @@ impl<'de> serde::Deserialize<'de> for InvitationStatus {
         deserializer.deserialize_any(GeneratedVisitor)
     }
 }
+impl serde::Serialize for OauthProvider {
+    #[allow(deprecated)]
+    fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        use serde::ser::SerializeStruct;
+        let mut len = 0;
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        if true {
+            len += 1;
+        }
+        let mut struct_ser = serializer.serialize_struct("external.data.v1.OauthProvider", len)?;
+        if true {
+            struct_ser.serialize_field("providerId", &self.provider_id)?;
+        }
+        if true {
+            struct_ser.serialize_field("providerName", &self.provider_name)?;
+        }
+        if true {
+            struct_ser.serialize_field("issuer", &self.issuer)?;
+        }
+        if true {
+            struct_ser.serialize_field("audience", &self.audience)?;
+        }
+        if true {
+            struct_ser.serialize_field("subject", &self.subject)?;
+        }
+        if let Some(v) = self.created_at.as_ref() {
+            struct_ser.serialize_field("createdAt", v)?;
+        }
+        if let Some(v) = self.updated_at.as_ref() {
+            struct_ser.serialize_field("updatedAt", v)?;
+        }
+        struct_ser.end()
+    }
+}
+impl<'de> serde::Deserialize<'de> for OauthProvider {
+    #[allow(deprecated)]
+    fn deserialize<D>(deserializer: D) -> std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        const FIELDS: &[&str] = &[
+            "provider_id",
+            "providerId",
+            "provider_name",
+            "providerName",
+            "issuer",
+            "audience",
+            "subject",
+            "created_at",
+            "createdAt",
+            "updated_at",
+            "updatedAt",
+        ];
+
+        #[allow(clippy::enum_variant_names)]
+        enum GeneratedField {
+            ProviderId,
+            ProviderName,
+            Issuer,
+            Audience,
+            Subject,
+            CreatedAt,
+            UpdatedAt,
+        }
+        impl<'de> serde::Deserialize<'de> for GeneratedField {
+            fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
+            where
+                D: serde::Deserializer<'de>,
+            {
+                struct GeneratedVisitor;
+
+                impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+                    type Value = GeneratedField;
+
+                    fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                        write!(formatter, "expected one of: {:?}", &FIELDS)
+                    }
+
+                    #[allow(unused_variables)]
+                    fn visit_str<E>(self, value: &str) -> std::result::Result<GeneratedField, E>
+                    where
+                        E: serde::de::Error,
+                    {
+                        match value {
+                            "providerId" | "provider_id" => Ok(GeneratedField::ProviderId),
+                            "providerName" | "provider_name" => Ok(GeneratedField::ProviderName),
+                            "issuer" => Ok(GeneratedField::Issuer),
+                            "audience" => Ok(GeneratedField::Audience),
+                            "subject" => Ok(GeneratedField::Subject),
+                            "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
+                            "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
+                            _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
+                        }
+                    }
+                }
+                deserializer.deserialize_identifier(GeneratedVisitor)
+            }
+        }
+        struct GeneratedVisitor;
+        impl<'de> serde::de::Visitor<'de> for GeneratedVisitor {
+            type Value = OauthProvider;
+
+            fn expecting(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                formatter.write_str("struct external.data.v1.OauthProvider")
+            }
+
+            fn visit_map<V>(self, mut map_: V) -> std::result::Result<OauthProvider, V::Error>
+                where
+                    V: serde::de::MapAccess<'de>,
+            {
+                let mut provider_id__ = None;
+                let mut provider_name__ = None;
+                let mut issuer__ = None;
+                let mut audience__ = None;
+                let mut subject__ = None;
+                let mut created_at__ = None;
+                let mut updated_at__ = None;
+                while let Some(k) = map_.next_key()? {
+                    match k {
+                        GeneratedField::ProviderId => {
+                            if provider_id__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("providerId"));
+                            }
+                            provider_id__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::ProviderName => {
+                            if provider_name__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("providerName"));
+                            }
+                            provider_name__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Issuer => {
+                            if issuer__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("issuer"));
+                            }
+                            issuer__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Audience => {
+                            if audience__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("audience"));
+                            }
+                            audience__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::Subject => {
+                            if subject__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("subject"));
+                            }
+                            subject__ = Some(map_.next_value()?);
+                        }
+                        GeneratedField::CreatedAt => {
+                            if created_at__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("createdAt"));
+                            }
+                            created_at__ = map_.next_value()?;
+                        }
+                        GeneratedField::UpdatedAt => {
+                            if updated_at__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("updatedAt"));
+                            }
+                            updated_at__ = map_.next_value()?;
+                        }
+                    }
+                }
+                Ok(OauthProvider {
+                    provider_id: provider_id__.unwrap_or_default(),
+                    provider_name: provider_name__.unwrap_or_default(),
+                    issuer: issuer__.unwrap_or_default(),
+                    audience: audience__.unwrap_or_default(),
+                    subject: subject__.unwrap_or_default(),
+                    created_at: created_at__,
+                    updated_at: updated_at__,
+                })
+            }
+        }
+        deserializer.deserialize_struct("external.data.v1.OauthProvider", FIELDS, GeneratedVisitor)
+    }
+}
 impl serde::Serialize for OrganizationData {
     #[allow(deprecated)]
     fn serialize<S>(&self, serializer: S) -> std::result::Result<S::Ok, S::Error>
@@ -2179,6 +2376,9 @@ impl serde::Serialize for User {
         if true {
             len += 1;
         }
+        if true {
+            len += 1;
+        }
         let mut struct_ser = serializer.serialize_struct("external.data.v1.User", len)?;
         if true {
             struct_ser.serialize_field("userId", &self.user_id)?;
@@ -2197,6 +2397,9 @@ impl serde::Serialize for User {
         }
         if true {
             struct_ser.serialize_field("userTags", &self.user_tags)?;
+        }
+        if true {
+            struct_ser.serialize_field("oauthProviders", &self.oauth_providers)?;
         }
         if let Some(v) = self.created_at.as_ref() {
             struct_ser.serialize_field("createdAt", v)?;
@@ -2225,6 +2428,8 @@ impl<'de> serde::Deserialize<'de> for User {
             "apiKeys",
             "user_tags",
             "userTags",
+            "oauth_providers",
+            "oauthProviders",
             "created_at",
             "createdAt",
             "updated_at",
@@ -2239,6 +2444,7 @@ impl<'de> serde::Deserialize<'de> for User {
             Authenticators,
             ApiKeys,
             UserTags,
+            OauthProviders,
             CreatedAt,
             UpdatedAt,
         }
@@ -2268,6 +2474,7 @@ impl<'de> serde::Deserialize<'de> for User {
                             "authenticators" => Ok(GeneratedField::Authenticators),
                             "apiKeys" | "api_keys" => Ok(GeneratedField::ApiKeys),
                             "userTags" | "user_tags" => Ok(GeneratedField::UserTags),
+                            "oauthProviders" | "oauth_providers" => Ok(GeneratedField::OauthProviders),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
@@ -2295,6 +2502,7 @@ impl<'de> serde::Deserialize<'de> for User {
                 let mut authenticators__ = None;
                 let mut api_keys__ = None;
                 let mut user_tags__ = None;
+                let mut oauth_providers__ = None;
                 let mut created_at__ = None;
                 let mut updated_at__ = None;
                 while let Some(k) = map_.next_key()? {
@@ -2335,6 +2543,12 @@ impl<'de> serde::Deserialize<'de> for User {
                             }
                             user_tags__ = Some(map_.next_value()?);
                         }
+                        GeneratedField::OauthProviders => {
+                            if oauth_providers__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("oauthProviders"));
+                            }
+                            oauth_providers__ = Some(map_.next_value()?);
+                        }
                         GeneratedField::CreatedAt => {
                             if created_at__.is_some() {
                                 return Err(serde::de::Error::duplicate_field("createdAt"));
@@ -2356,6 +2570,7 @@ impl<'de> serde::Deserialize<'de> for User {
                     authenticators: authenticators__.unwrap_or_default(),
                     api_keys: api_keys__.unwrap_or_default(),
                     user_tags: user_tags__.unwrap_or_default(),
+                    oauth_providers: oauth_providers__.unwrap_or_default(),
                     created_at: created_at__,
                     updated_at: updated_at__,
                 })

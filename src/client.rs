@@ -164,6 +164,7 @@ impl TurnkeyClient {
             Ok(_) => {
                 let response_body = response.text().await.map_err(TurnkeyError::HttpError)?;
                 println!("response body: {}", response_body);
+                println!("type: {}", std::any::type_name::<O>());
                 match serde_json::from_str(&response_body) {
                     Ok(parsed) => {
                         return Ok(parsed);

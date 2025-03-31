@@ -52,8 +52,12 @@ message User {
     (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "A list of User Tag IDs."}
   ];
-  Timestamp created_at = 8 [(google.api.field_behavior) = REQUIRED];
-  Timestamp updated_at = 9 [(google.api.field_behavior) = REQUIRED];
+  repeated OauthProvider oauth_providers = 8 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "A list of Oauth Providers."}
+  ];
+  Timestamp created_at = 9 [(google.api.field_behavior) = REQUIRED];
+  Timestamp updated_at = 10 [(google.api.field_behavior) = REQUIRED];
 }
 
 message ApiKey {
@@ -75,6 +79,31 @@ message ApiKey {
     (google.api.field_behavior) = OPTIONAL,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Optional window (in seconds) indicating how long the API Key should last."}
   ];
+}
+
+message OauthProvider {
+  string provider_id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Unique identifier for an OAuth Provider"}
+  ];
+  string provider_name = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable name to identify a Provider."}
+  ];
+  string issuer = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The issuer of the token, typically a URL indicating the authentication server, e.g https://accounts.google.com"}
+  ];
+  string audience = 4 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Expected audience ('aud' attribute of the signed token) which represents the app ID"}
+  ];
+  string subject = 5 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Expected subject ('sub' attribute of the signed token) which represents the user ID"}
+  ];
+  Timestamp created_at = 6 [(google.api.field_behavior) = REQUIRED];
+  Timestamp updated_at = 7 [(google.api.field_behavior) = REQUIRED];
 }
 
 message Authenticator {
