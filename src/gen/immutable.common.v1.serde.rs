@@ -982,6 +982,7 @@ impl serde::Serialize for TransactionType {
         let variant = match self {
             Self::Unspecified => "TRANSACTION_TYPE_UNSPECIFIED",
             Self::Ethereum => "TRANSACTION_TYPE_ETHEREUM",
+            Self::Solana => "TRANSACTION_TYPE_SOLANA",
         };
         serializer.serialize_str(variant)
     }
@@ -995,6 +996,7 @@ impl<'de> serde::Deserialize<'de> for TransactionType {
         const FIELDS: &[&str] = &[
             "TRANSACTION_TYPE_UNSPECIFIED",
             "TRANSACTION_TYPE_ETHEREUM",
+            "TRANSACTION_TYPE_SOLANA",
         ];
 
         struct GeneratedVisitor;
@@ -1037,6 +1039,7 @@ impl<'de> serde::Deserialize<'de> for TransactionType {
                 match value {
                     "TRANSACTION_TYPE_UNSPECIFIED" => Ok(TransactionType::Unspecified),
                     "TRANSACTION_TYPE_ETHEREUM" => Ok(TransactionType::Ethereum),
+                    "TRANSACTION_TYPE_SOLANA" => Ok(TransactionType::Solana),
                     _ => Err(serde::de::Error::unknown_variant(value, FIELDS)),
                 }
             }

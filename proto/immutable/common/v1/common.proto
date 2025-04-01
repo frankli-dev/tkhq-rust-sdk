@@ -104,6 +104,7 @@ enum TransactionType {
   TRANSACTION_TYPE_UNSPECIFIED = 0;
   // Unsigned Ethereum transaction, RLP-encoded and hex-encoded
   TRANSACTION_TYPE_ETHEREUM = 1;
+  TRANSACTION_TYPE_SOLANA = 2;
 }
 
 enum Outcome {

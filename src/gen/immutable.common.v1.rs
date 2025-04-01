@@ -356,6 +356,7 @@ pub enum TransactionType {
     Unspecified = 0,
     /// Unsigned Ethereum transaction, RLP-encoded and hex-encoded
     Ethereum = 1,
+    Solana = 2,
 }
 impl TransactionType {
     /// String value of the enum field names used in the ProtoBuf definition.
@@ -366,6 +367,7 @@ impl TransactionType {
         match self {
             TransactionType::Unspecified => "TRANSACTION_TYPE_UNSPECIFIED",
             TransactionType::Ethereum => "TRANSACTION_TYPE_ETHEREUM",
+            TransactionType::Solana => "TRANSACTION_TYPE_SOLANA",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
@@ -373,6 +375,7 @@ impl TransactionType {
         match value {
             "TRANSACTION_TYPE_UNSPECIFIED" => Some(Self::Unspecified),
             "TRANSACTION_TYPE_ETHEREUM" => Some(Self::Ethereum),
+            "TRANSACTION_TYPE_SOLANA" => Some(Self::Solana),
             _ => None,
         }
     }
