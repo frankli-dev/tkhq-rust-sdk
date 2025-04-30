@@ -53,4 +53,8 @@ message WalletAccount {
   //  (google.api.field_behavior) = REQUIRED,
   //  (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "True when a given Account is exported, false otherwise."}
   //];
+  string public_key = 11 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Public key generated using the Wallet seed and Account parameters."}
+  ];
 }

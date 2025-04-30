@@ -320,11 +320,13 @@ pub struct WalletAccount {
     pub address: ::prost::alloc::string::String,
     #[prost(message, optional, tag="9")]
     pub created_at: ::core::option::Option<Timestamp>,
+    #[prost(message, optional, tag="10")]
+    pub updated_at: ::core::option::Option<Timestamp>,
     /// TODO(tim): temporarily removing this since it's always "false"
     /// bool exported = 10 [
     ///   (google.api.field_behavior) = REQUIRED,
     ///   (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "True when a given Account is exported, false otherwise."}
     /// ];
-    #[prost(message, optional, tag="10")]
-    pub updated_at: ::core::option::Option<Timestamp>,
+    #[prost(string, tag="11")]
+    pub public_key: ::prost::alloc::string::String,
 }

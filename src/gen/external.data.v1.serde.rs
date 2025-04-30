@@ -2797,6 +2797,9 @@ impl serde::Serialize for WalletAccount {
         if true {
             len += 1;
         }
+        if true {
+            len += 1;
+        }
         let mut struct_ser = serializer.serialize_struct("external.data.v1.WalletAccount", len)?;
         if true {
             struct_ser.serialize_field("walletAccountId", &self.wallet_account_id)?;
@@ -2828,6 +2831,9 @@ impl serde::Serialize for WalletAccount {
         if let Some(v) = self.updated_at.as_ref() {
             struct_ser.serialize_field("updatedAt", v)?;
         }
+        if true {
+            struct_ser.serialize_field("publicKey", &self.public_key)?;
+        }
         struct_ser.end()
     }
 }
@@ -2855,6 +2861,8 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
             "createdAt",
             "updated_at",
             "updatedAt",
+            "public_key",
+            "publicKey",
         ];
 
         #[allow(clippy::enum_variant_names)]
@@ -2869,6 +2877,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
             Address,
             CreatedAt,
             UpdatedAt,
+            PublicKey,
         }
         impl<'de> serde::Deserialize<'de> for GeneratedField {
             fn deserialize<D>(deserializer: D) -> std::result::Result<GeneratedField, D::Error>
@@ -2900,6 +2909,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                             "address" => Ok(GeneratedField::Address),
                             "createdAt" | "created_at" => Ok(GeneratedField::CreatedAt),
                             "updatedAt" | "updated_at" => Ok(GeneratedField::UpdatedAt),
+                            "publicKey" | "public_key" => Ok(GeneratedField::PublicKey),
                             _ => Err(serde::de::Error::unknown_field(value, FIELDS)),
                         }
                     }
@@ -2929,6 +2939,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                 let mut address__ = None;
                 let mut created_at__ = None;
                 let mut updated_at__ = None;
+                let mut public_key__ = None;
                 while let Some(k) = map_.next_key()? {
                     match k {
                         GeneratedField::WalletAccountId => {
@@ -2991,6 +3002,12 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                             }
                             updated_at__ = map_.next_value()?;
                         }
+                        GeneratedField::PublicKey => {
+                            if public_key__.is_some() {
+                                return Err(serde::de::Error::duplicate_field("publicKey"));
+                            }
+                            public_key__ = Some(map_.next_value()?);
+                        }
                     }
                 }
                 Ok(WalletAccount {
@@ -3004,6 +3021,7 @@ impl<'de> serde::Deserialize<'de> for WalletAccount {
                     address: address__.unwrap_or_default(),
                     created_at: created_at__,
                     updated_at: updated_at__,
+                    public_key: public_key__.unwrap_or_default(),
                 })
             }
         }
